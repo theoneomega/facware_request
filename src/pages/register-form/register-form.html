@@ -1,0 +1,57 @@
+<!--
+  Generated template for the RegisterFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registrarme</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <p>
+    <img src="assets/imgs/shopping-car.svg">
+  </p>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+    <ion-item>
+      <ion-label>Nombre(s)</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellido</ion-label>
+      <ion-input formControlName="last_name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Correo</ion-label>
+      <ion-input formControlName="email" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="myForm.get('email').hasError('email') && (myForm.get('email').dirty || myForm.get('email').touched)">
+      <p  class="error">Please enter a valid email.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Usuario</ion-label>
+      <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Telefono</ion-label>
+      <ion-input formControlName="phone" type="phone"></ion-input>
+    </ion-item>
+    <!--<ion-item>-->
+    <!--<ion-label>Contraseña</ion-label>-->
+    <!--<ion-input type="password" [(ngModel)]="user.password"></ion-input>-->
+    <!--</ion-item>-->
+    <!--<ion-item>-->
+    <!--<ion-label>Confirmar contraseña</ion-label>-->
+    <!--<ion-input type="password" [(ngModel)]="user.password_confirmation"></ion-input>-->
+    <!--</ion-item>-->
+    <button ion-button type="submit" block [disabled]="!myForm.valid">Registrarme</button>
+
+  </form>
+</ion-content>
