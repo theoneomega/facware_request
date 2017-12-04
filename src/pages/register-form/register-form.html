@@ -1,18 +1,8 @@
-<!--
-  Generated template for the RegisterFormPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
     <ion-title>Registrarme</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
   <p>
     <img src="assets/imgs/shopping-car.svg">
@@ -22,36 +12,72 @@
       <ion-label>Nombre(s)</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
     </ion-item>
+    <div *ngFor="let validation of validation_messages.name">
+      <ion-item
+        *ngIf="myForm.get('name').hasError(validation.type) && (myForm.get('name').dirty || myForm.get('name').touched)">
+        <p class="error">{{validation.message}}</p>
+      </ion-item>
+    </div>
     <ion-item>
       <ion-label>Apellido</ion-label>
       <ion-input formControlName="last_name" type="text"></ion-input>
     </ion-item>
+    <div *ngFor="let validation of validation_messages.last_name">
+      <ion-item
+        *ngIf="myForm.get('last_name').hasError(validation.type) && (myForm.get('last_name').dirty || myForm.get('last_name').touched)">
+        <p class="error">{{validation.message}}</p>
+      </ion-item>
+    </div>
     <ion-item>
       <ion-label>Correo</ion-label>
       <ion-input formControlName="email" type="text"></ion-input>
     </ion-item>
-
-    <ion-item *ngIf="myForm.get('email').hasError('email') && (myForm.get('email').dirty || myForm.get('email').touched)">
-      <p  class="error">Please enter a valid email.</p>
-    </ion-item>
-
+    <div *ngFor="let validation of validation_messages.email">
+      <ion-item
+        *ngIf="myForm.get('email').hasError(validation.type) && (myForm.get('email').dirty || myForm.get('email').touched)">
+        <p class="error">{{validation.message}}</p>
+      </ion-item>
+    </div>
     <ion-item>
       <ion-label>Usuario</ion-label>
-      <ion-input type="text" formControlName="username"></ion-input>
+      <ion-input formControlName="username" type="text"></ion-input>
     </ion-item>
+    <div *ngFor="let validation of validation_messages.username">
+      <ion-item
+        *ngIf="myForm.get('username').hasError(validation.type) && (myForm.get('username').dirty || myForm.get('username').touched)">
+        <p class="error">{{validation.message}}</p>
+      </ion-item>
+    </div>
     <ion-item>
       <ion-label>Telefono</ion-label>
       <ion-input formControlName="phone" type="phone"></ion-input>
     </ion-item>
-    <!--<ion-item>-->
-    <!--<ion-label>Contraseña</ion-label>-->
-    <!--<ion-input type="password" [(ngModel)]="user.password"></ion-input>-->
-    <!--</ion-item>-->
-    <!--<ion-item>-->
-    <!--<ion-label>Confirmar contraseña</ion-label>-->
-    <!--<ion-input type="password" [(ngModel)]="user.password_confirmation"></ion-input>-->
-    <!--</ion-item>-->
+    <div *ngFor="let validation of validation_messages.phone">
+      <ion-item
+        *ngIf="myForm.get('phone').hasError(validation.type) && (myForm.get('phone').dirty || myForm.get('phone').touched)">
+        <p class="error">{{validation.message}}</p>
+      </ion-item>
+    </div>
+    <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <div *ngFor="let validation of validation_messages.password">
+      <ion-item
+        *ngIf="myForm.get('password').hasError(validation.type) && (myForm.get('password').dirty || myForm.get('password').touched)">
+        <p class="error">{{validation.message}}</p>
+      </ion-item>
+    </div>
+    <ion-item>
+      <ion-label>Confirmar contraseña</ion-label>
+      <ion-input formControlName="password_confirmation" type="password"></ion-input>
+    </ion-item>
+    <div *ngFor="let validation of validation_messages.password_confirmation">
+      <ion-item
+        *ngIf="myForm.get('password_confirmation').hasError(validation.type) && (myForm.get('password_confirmation').dirty || myForm.get('password_confirmation').touched)">
+        <p class="error">{{validation.message}}</p>
+      </ion-item>
+    </div>
     <button ion-button type="submit" block [disabled]="!myForm.valid">Registrarme</button>
-
   </form>
 </ion-content>

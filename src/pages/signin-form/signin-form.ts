@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
+import {HomePage} from "../home/home";
 
 /**
  * Generated class for the SigninFormPage page.
@@ -27,6 +28,8 @@ export class SigninFormPage {
 
   logForm() {
     console.log(this.user);
+    localStorage.setItem('user', JSON.stringify(this.user));
+    this.navCtrl.setRoot(HomePage);
   }
 
 }
